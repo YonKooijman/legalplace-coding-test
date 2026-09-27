@@ -1,7 +1,7 @@
 import {
-  BenefitRule,
-  BenefitRuleFactory,
-} from "./benefitRules/benefitRuleFactory";
+  DailyUpdate,
+  DailyUpdateFactory,
+} from "./dailyUpdates/dailyUpdateFactory";
 
 function clamp(value: number, min: number, max: number): number {
   return Math.min(max, Math.max(min, value));
@@ -12,13 +12,13 @@ export class Drug {
   expiresIn: number;
   benefit: number;
   // # fields are omitted by JSON.stringify. A TypeScript `private` field would appear in output.json.
-  readonly #rule: BenefitRule;
+  readonly #dailyUpdate: DailyUpdate;
 
   constructor(name: string, expiresIn: number, benefit: number) {
     this.name = name;
     this.expiresIn = expiresIn;
     this.benefit = benefit;
-    this.#rule = BenefitRuleFactory.create(name);
+    this.#dailyUpdate = DailyUpdateFactory.create(name);
   }
 
   updateBenefitValue(): void {
@@ -28,7 +28,8 @@ export class Drug {
 
   private updateBenefit(): void {
     const newBenefit = clamp(
-      this.benefit + this.#rule.benefitChange(this.expiresIn, this.benefit),
+      this.benefit +
+        this.#dailyUpdate.getBenefitChange(this.expiresIn, this.benefit),
       0,
       50,
     );
@@ -36,7 +37,8 @@ export class Drug {
   }
 
   private updateExpiresIn(): void {
-    const newExpiresIn = this.expiresIn + this.#rule.expiresInChange();
+    const newExpiresIn =
+      this.expiresIn + this.#dailyUpdate.getExpiresInChange();
     this.expiresIn = newExpiresIn;
   }
 }
