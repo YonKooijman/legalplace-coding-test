@@ -1,4 +1,4 @@
-import { Drug } from "./drugs/drug";
+import { Drug } from "./drug/drug";
 
 export { Drug };
 

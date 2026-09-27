@@ -1,3 +1,4 @@
+import { DafalganBenefitRule } from "./dafalgan";
 import { FervexBenefitRule } from "./fervex";
 import { HerbalTeaBenefitRule } from "./herbalTea";
 import { MagicPillBenefitRule } from "./magicPill";
@@ -17,6 +18,8 @@ export class BenefitRuleFactory {
         return new FervexBenefitRule();
       case "Magic Pill":
         return new MagicPillBenefitRule();
+      case "Dafalgan":
+        return new DafalganBenefitRule();
       default:
         return new StandardDrugBenefitRule();
     }
