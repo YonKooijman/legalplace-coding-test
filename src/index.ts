@@ -10,7 +10,7 @@ const drugs = [
 ];
 const pharmacy = new Pharmacy(drugs);
 
-const log = [];
+const log: Drug[][] = [];
 
 for (let elapsedDays = 0; elapsedDays < 30; elapsedDays++) {
   log.push(JSON.parse(JSON.stringify(pharmacy.updateBenefitValue())));
@@ -20,7 +20,7 @@ for (let elapsedDays = 0; elapsedDays < 30; elapsedDays++) {
 fs.writeFile(
   "output.json",
   JSON.stringify({ result: log }, null, 2).concat("\n"),
-  (err) => {
+  (err: NodeJS.ErrnoException | null) => {
     if (err) {
       console.log("error");
     } else {
