@@ -5,10 +5,11 @@ jest.mock("fs", () => {
 
 import fs from "fs";
 
-import "../../src/index";
-
 describe("pharmacy", () => {
-  it("writes the same simulation as output.json", () => {
+  it("writes the same simulation as output.json", async () => {
+    // Loading index.ts runs the 30-day simulation, then calls writeFile.
+    await import("../../src/index");
+
     const expected = fs.readFileSync("output.json", "utf8");
 
     expect(fs.writeFile).toHaveBeenCalledWith(
