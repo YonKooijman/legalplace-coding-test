@@ -1,6 +1,6 @@
 import { Drug } from "../../src/pharmacy";
 
-import { updatedDrug } from "../utils/updatedDrug";
+import { updatedDrug } from "../utils";
 
 const magicPill = "Magic Pill";
 

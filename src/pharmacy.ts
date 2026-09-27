@@ -10,9 +10,7 @@ export class Pharmacy {
   }
 
   updateBenefitValue(): Drug[] {
-    for (const drug of this.drugs) {
-      drug.updateBenefitValue();
-    }
+    this.drugs.forEach((drug) => drug.updateBenefitValue());
     return this.drugs;
   }
 }

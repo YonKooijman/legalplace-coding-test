@@ -1,11 +1,9 @@
+import { clamp } from "../utils";
+
 import {
   DailyUpdate,
   DailyUpdateFactory,
 } from "./dailyUpdates/dailyUpdateFactory";
-
-function clamp(value: number, min: number, max: number): number {
-  return Math.min(max, Math.max(min, value));
-}
 
 export class Drug {
   name: string;

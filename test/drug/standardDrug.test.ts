@@ -1,6 +1,6 @@
 import { Drug, Pharmacy } from "../../src/pharmacy";
 
-import { updatedDrug } from "../utils/updatedDrug";
+import { updatedDrug } from "../utils";
 
 describe("standardDrug", () => {
   it("should decrease the benefit and expiresIn", () => {

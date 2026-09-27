@@ -1,4 +1,4 @@
-import { Drug, Pharmacy } from "../../src/pharmacy";
+import { Drug, Pharmacy } from "../src/pharmacy";
 
 export function updatedDrug(
   name: string,
